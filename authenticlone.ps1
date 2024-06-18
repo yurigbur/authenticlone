@@ -39,11 +39,7 @@ function SelfSignExecutable {
 
     $newCert = New-SelfSignedCertificate -CloneCert $params -CertStoreLocation "Cert:\CurrentUser\My"
 
-    $pass = ConvertTo-SecureString -String "asdfasdf1234" -Force -AsPlainText
-    Set-AuthenticodeSignature -FilePath $exePath -Certificate $newCert #-TimestampServer "http://timestamp.digicert.com"
-    
-    #Export-PfxCertificate -Cert $newCert -FilePath $pfxPath -Password $pass
-
+    Set-AuthenticodeSignature -FilePath $exePath -Certificate $newCert
 }
 
 
